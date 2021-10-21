@@ -1,0 +1,27 @@
+version: '3.7'
+services:
+  database:
+    container_name: database
+    image: postgres:14-alpine
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_PASSWORD=password
+    volumes:
+      - database_data:/var/lib/postgresql/data
+
+  web:
+    build: .
+    container_name: web
+    command: make start
+    volumes:
+      - .:/inventory-assignment
+    ports:
+      - 3000:3000
+    depends_on:
+      - database
+    tty: true
+    stdin_open: true
+
+volumes:
+  database_data:
