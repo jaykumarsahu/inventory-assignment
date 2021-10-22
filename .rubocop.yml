@@ -1,0 +1,4 @@
+inherit_from: .rubocop-excludes.yml
+
+AllCops:
+  SuggestExtensions: false
