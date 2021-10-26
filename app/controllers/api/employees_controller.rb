@@ -12,6 +12,8 @@ module Api
 
     def create
       @record = @company.users.new(employee_params)
+      @record.password = params[:employee][:password]
+      @record.password_confirmation = params[:employee][:password_confirmation]
 
       if @record.save
         render json: { employee: @record }
@@ -40,7 +42,7 @@ module Api
     end
 
     def employee_params
-      params.fetch(:employee, {})
+      params.require(:employee).permit(:role_type, :email)
     end
   end
 end

@@ -11,7 +11,10 @@ module Api
     end
 
     def create
-      @record = @company.products.new(product_params)
+      inventory = @company.inventories.find_by(id: params[:inventory_id])
+      render json: { errors: 'Invalid inventory' }, status: :unprocessable_entity and return unless inventory
+
+      @record = inventory.products.new(product_params)
 
       if @record.save
         render json: { product: @record }

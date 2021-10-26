@@ -11,7 +11,7 @@
 - `rubocop`  to maintain conventions
 - `pry-rails`  to debug the issues
 
-## Installation
+## Pre-requisite Installation
 1. Install [Docker](https://www.docker.com/)
 1. Install [Docker Compose](https://docs.docker.com/compose/install/)
 
@@ -25,28 +25,28 @@
 ### Instructions
 1. run `make build` to load all gem dependencies
 2. run `make db-setup` to create & migrate DB schema
-3. run `make build` to up to application
+3. run `make start` to up to application
 4. use Postman collection to check API endpoints
 5. open `localhost:3000/admin` on browser to access admin panel
 6. credentials for login => `admin@example.com/password`
 
 ### API endpoints
 ```
-POST           `/api/sign_in`                          # Sign-in
-PUT            `/api/products/:id/update_status`       # Approve/Reject product
-GET            `/api/products`                         # Fetch all products of a company
-GET            `/api/employees`                        # Fetch all employees of a company
-GET            `/api/inventories`                      # Fetch all inventories of a company
-POST           `/api/products`                         # Create product
-POST           `/api/inventories`                      # Create inventory
-POST           `/api/employees`                        # Create employee
-GET            `/api/products/:id`                     # Fetch product detail
-GET            `/api/inventories/:id`                  # Fetch inventory detail
-GET            `/api/employees/:id`                    # Fetch employee detail
-PUT            `/api/products/:id`                     # Update product
-PUT            `/api/employees/:id`                    # Update employee
-PUT            `/api/inventories/:id`                  # Update inventory
-DELETE         `/api/products/:id`                     # Delete product
-DELETE         `/api/employees/:id`                    # Delete employee
-DELETE         `/api/inventories/:id`                  # Delete inventory
+POST           `/api/sign_in`                                 # Sign-in
+PUT            `/api/products/:id/update_status`              # Approve/Reject product
+GET            `/api/products`                                # Fetch all products of a company
+GET            `/api/employees`                               # Fetch all employees of a company
+GET            `/api/inventories`                             # Fetch all inventories of a company
+POST           `/api/inventories/:inventory_id/products`      # Create product
+POST           `/api/inventories`                             # Create inventory
+POST           `/api/employees`                               # Create employee
+GET            `/api/products/:id`                            # Fetch product detail
+GET            `/api/inventories/:id`                         # Fetch inventory detail
+GET            `/api/employees/:id`                           # Fetch employee detail
+PUT            `/api/products/:id`                            # Update product
+PUT            `/api/employees/:id`                           # Update employee
+PUT            `/api/inventories/:id`                         # Update inventory
+DELETE         `/api/products/:id`                            # Delete product
+DELETE         `/api/employees/:id`                           # Delete employee
+DELETE         `/api/inventories/:id`                         # Delete inventory
 ```

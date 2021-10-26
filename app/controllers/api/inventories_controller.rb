@@ -40,7 +40,7 @@ module Api
     end
 
     def inventory_params
-      params.fetch(:inventory, {})
+      params.require(:inventory).permit(:name)
     end
   end
 end
