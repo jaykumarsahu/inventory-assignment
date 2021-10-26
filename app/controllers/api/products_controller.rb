@@ -1,6 +1,6 @@
 module Api
   class ProductsController < Api::BaseController
-    before_action :authorized?, only: %i[update destroy update_status]
+    before_action :authorized?
     before_action :set_product, only: %i[show update destroy update_status]
 
     def index
@@ -17,7 +17,7 @@ module Api
       if @record.save
         render json: { product: @record }
       else
-        render :new
+        render json: { errors: @record.errors }
       end
     end
 

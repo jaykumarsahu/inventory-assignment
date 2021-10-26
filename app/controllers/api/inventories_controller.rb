@@ -16,7 +16,7 @@ module Api
       if @record.save
         render json: { inventory: @record }
       else
-        render :new
+        render json: { errors: @record.errors }
       end
     end
 
@@ -24,7 +24,7 @@ module Api
       if @record.update(inventory_params)
         render json: { inventory: @record }
       else
-        render :edit
+        render json: { errors: @record.errors }
       end
     end
 
