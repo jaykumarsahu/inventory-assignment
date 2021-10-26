@@ -7,13 +7,12 @@ class ApplicationController < ActionController::Base
   def authenticate_request!
     return invalid_authentication if !payload || !AuthToken.valid?(payload)
 
-    load_current_user!
-    invalid_authentication unless @current_user
+    invalid_authentication unless current_user
   end
 
   # Returns 401 response. To handle malformed / invalid requests.
   def invalid_authentication
-    render json: { error: I18n.t('devise.failure.unauthenticated') }, status: :unauthorized
+    render json: { error: I18n.t('devise.failure.invalid') }, status: :unauthorized
   end
 
   private
@@ -27,7 +26,9 @@ class ApplicationController < ActionController::Base
   end
 
   # Sets the @current_user with the user_id from payload
-  def load_current_user!
-    @current_user = User.find_by(id: payload['id'])
+  def current_user
+    return unless payload
+
+    @current_user ||= User.find_by(id: payload['id'])
   end
 end

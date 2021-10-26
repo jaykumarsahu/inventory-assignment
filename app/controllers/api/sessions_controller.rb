@@ -8,7 +8,8 @@ module Api
         auth_token = AuthToken.encode({ id: user.id })
         render json: { auth_token: auth_token }, status: :ok
       else
-        render json: { error: I18n.t('devise.failure.invalid', authentication_keys: :email) }, status: :unprocessable_entity
+        render json: { error: I18n.t('devise.failure.invalid', authentication_keys: :email) },
+               status: :unprocessable_entity
       end
     end
   end
