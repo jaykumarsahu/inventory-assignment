@@ -1,6 +1,5 @@
 module Api
   class ProductsController < Api::BaseController
-    before_action :authorized?
     before_action :set_product, only: %i[show update destroy update_status]
 
     def index

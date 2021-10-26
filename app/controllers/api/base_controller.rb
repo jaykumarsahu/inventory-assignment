@@ -1,6 +1,8 @@
 module Api
   class BaseController < ApplicationController
-    before_action :authenticate_request!, :set_company
+    before_action :authenticate_request!
+    before_action :authorize_user!
+    before_action :set_company
 
     private
 
@@ -10,7 +12,7 @@ module Api
       @company = current_user.company
     end
 
-    def authorized?
+    def authorize_user!
       service = PermissionService.new(current_user)
       resource = params[:controller].split('/').last.classify
       return if service.has_permission?(resource, params[:action])
