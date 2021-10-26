@@ -26,7 +26,7 @@
 1. run `make build` to load all gem dependencies
 2. run `make db-setup` to create & migrate DB schema
 3. run `make start` to up to application
-4. use Postman collection to check API endpoints
+4. use Postman collection `inventory-assignment.postman_collection.json` to check API endpoints
 5. open `localhost:3000/admin` on browser to access admin panel
 6. credentials for login => `admin@example.com/password`
 
