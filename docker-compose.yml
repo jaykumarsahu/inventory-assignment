@@ -13,7 +13,7 @@ services:
   web:
     build: .
     container_name: web
-    command: make start
+    command: make app-start
     volumes:
       - .:/inventory-assignment
     ports:
